@@ -1,0 +1,1014 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>GameEventSheet</name>
+    <events>
+        <variable constant="0" name="playerDead" sid="8890736038652258" static="0" type="number">0</variable>
+        <variable constant="0" name="OnMain" sid="2711178808337606" static="0" type="number">1</variable>
+        <variable constant="0" name="HighScore" sid="568677024073011" static="0" type="number">0</variable>
+        <variable constant="0" name="firstTime" sid="9232370360749769" static="0" type="number">1</variable>
+        <variable constant="0" name="isPaused" sid="8795703883005295" static="0" type="number">0</variable>
+        <variable constant="0" name="Score" sid="4380561279991835" static="0" type="number">0</variable>
+        <event-block sid="3870629070538863">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="6173983876410691" type="System" />
+            </conditions>
+            <actions>
+                <action id="-15" name="Set visible" sid="9366640450524466" type="txtGameOver">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="-9" name="Set value" sid="1552451918476969" type="System">
+                    <param id="0" name="Variable">isPaused</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="-9" name="Set value" sid="3783631730001204" type="System">
+                    <param id="0" name="Variable">OnMain</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="-9" name="Set value" sid="2663174459514154" type="System">
+                    <param id="0" name="Variable">Score</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="-15" name="Set visible" sid="4499508767177249" type="mainmenuButton">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="-15" name="Set visible" sid="212424420061652" type="restartButton">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="-15" name="Set visible" sid="3590078787990106" type="score">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="-15" name="Set visible" sid="5462929249620376" type="txtActualScore">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="-15" name="Set visible" sid="3209939489040554" type="txtGameOver">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="-15" name="Set visible" sid="424526137514157" type="txtScore">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="-15" name="Set visible" sid="5894136906250405" type="txtPaused">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="-15" name="Set visible" sid="4642441282564626" type="resumeButton">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="2712710669849032">
+                    <conditions>
+                        <condition id="7" name="Compare key value (as number)" sid="9125977214562106" type="WebStorage">
+                            <param id="0" name="Key">&quot;SoundOn&quot;</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="5" name="Play music (by WAV URI)" sid="540605367355323" type="WindowsPhone">
+                            <param id="0" name="Audio file URI">&quot;media/mainmusicv2.wav&quot;</param>
+                            <param id="3" name="Loop">1</param>
+                            <param id="4" name="Volume">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="7460625224285372">
+                    <conditions>
+                        <condition id="3" name="Local key exists" sid="2173008193171832" type="WebStorage">
+                            <param id="0" name="Key">&quot;HighScore&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="8392396093126418" type="System">
+                            <param id="0" name="Variable">HighScore</param>
+                            <param id="1" name="Value">WebStorage.LocalValue(&quot;HighScore&quot;)</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="9839422486915426">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="3679139708029614" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="7856846240140202" type="System">
+                            <param id="0" name="Variable">HighScore</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="5530456701677263">
+            <conditions>
+                <condition id="-1" name="Every tick" sid="6843538072365753" type="System" />
+            </conditions>
+            <actions>
+                <action id="0" name="Set text" sid="108176990812627" type="Status">
+                    <param id="0" name="Text">&quot;Score: &quot; &amp; Score &amp; &quot; - FPS: &quot; &amp; fps </param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>Bullet Action</comment>
+        <event-block sid="3516293684933434">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="2604697658522274" type="Bullet">
+                    <param id="0" name="Object">greenOrb</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Spawn another object" sid="4229885641968919" type="Bullet">
+                    <param id="0" name="Object">Explosion</param>
+                    <param id="1" name="Layer">&quot;Main&quot;</param>
+                    <param id="2" name="Image point">0</param>
+                </action>
+                <action id="-8" name="Set angle" sid="3415907150946005" type="Explosion">
+                    <param id="0" name="Angle">random(360)</param>
+                </action>
+                <action id="-12" name="Set group active" sid="9522662298437667" type="System">
+                    <param id="0" name="Group name">&quot;ExpSound&quot;</param>
+                    <param id="1" name="State">1</param>
+                </action>
+                <action id="-9" name="Destroy" sid="1251830670637567" type="greenOrb" />
+                <action id="-9" name="Destroy" sid="7074221389579597" type="Bullet" />
+                <action id="-10" name="Add to" sid="4953041731352121" type="System">
+                    <param id="0" name="Variable">Score</param>
+                    <param id="1" name="Value">2</param>
+                </action>
+                <action id="-12" name="Set group active" sid="9702211024527447" type="System">
+                    <param id="0" name="Group name">&quot;Vibrate&quot;</param>
+                    <param id="1" name="State">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block collapsed="1" sid="9983404344949686">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="9462684634547541" type="Bullet">
+                    <param id="0" name="Object">blueOrb</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Spawn another object" sid="8362468093220332" type="blueOrb">
+                    <param id="0" name="Object">Explosion</param>
+                    <param id="1" name="Layer">1</param>
+                    <param id="2" name="Image point">0</param>
+                </action>
+                <action id="-9" name="Destroy" sid="976518477944593" type="blueOrb" />
+                <action id="-9" name="Destroy" sid="8888696961145482" type="Bullet" />
+                <action id="-9" name="Destroy" sid="1454775990321697" type="Player" />
+                <action id="-12" name="Set group active" sid="4941502311178122" type="System">
+                    <param id="0" name="Group name">&quot;ExpSound&quot;</param>
+                    <param id="1" name="State">1</param>
+                </action>
+                <action id="-9" name="Set value" sid="2292771119111937" type="System">
+                    <param id="0" name="Variable">playerDead</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="-9" name="Set value" sid="6977945387577617" type="System">
+                    <param id="0" name="Variable">isPaused</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="-12" name="Set group active" sid="8477488150423053" type="System">
+                    <param id="0" name="Group name">&quot;Death&quot;</param>
+                    <param id="1" name="State">1</param>
+                </action>
+                <action id="-12" name="Set group active" sid="2380808648489739" type="System">
+                    <param id="0" name="Group name">&quot;Vibrate&quot;</param>
+                    <param id="1" name="State">1</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="7869810574925695">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="5025795779459001" type="System">
+                            <param id="0" name="First value">Score</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Second value">HighScore</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set local value" sid="257516188332047" type="WebStorage">
+                            <param id="0" name="Key">&quot;HighScore&quot;</param>
+                            <param id="1" name="Value">Score</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="2809536755404292">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="7266341725594382" type="Bullet">
+                    <param id="0" name="Object">redOrb</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Spawn another object" sid="8812465665294735" type="Bullet">
+                    <param id="0" name="Object">Explosion</param>
+                    <param id="1" name="Layer">1</param>
+                    <param id="2" name="Image point">0</param>
+                </action>
+                <action id="-9" name="Destroy" sid="9895154815166989" type="Bullet" />
+                <action id="-9" name="Destroy" sid="2062731051804444" type="redOrb" />
+                <action id="-12" name="Set group active" sid="302247853834354" type="System">
+                    <param id="0" name="Group name">&quot;ExpSound&quot;</param>
+                    <param id="1" name="State">1</param>
+                </action>
+                <action id="-11" name="Subtract from" sid="7910600366732089" type="System">
+                    <param id="0" name="Variable">Score</param>
+                    <param id="1" name="Value">5</param>
+                </action>
+                <action id="-12" name="Set group active" sid="7625282868283765" type="System">
+                    <param id="0" name="Group name">&quot;Vibrate&quot;</param>
+                    <param id="1" name="State">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="7971926539104881">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="576221953532355" type="System">
+                    <param id="0" name="Variable">Score</param>
+                    <param id="1" name="Comparison">2</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="6296776111716241" type="System">
+                    <param id="0" name="Variable">Score</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block collapsed="1" sid="7157998177814338">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="9632463082649903" type="Player">
+                    <param id="0" name="Object">greenOrb</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="9506557838871979" type="greenOrb" />
+                <action id="-9" name="Destroy" sid="2683073451862076" type="Player" />
+                <action id="-9" name="Set value" sid="5390295433064563" type="System">
+                    <param id="0" name="Variable">playerDead</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="-9" name="Set value" sid="7862295250282818" type="System">
+                    <param id="0" name="Variable">isPaused</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="-12" name="Set group active" sid="7441268965687473" type="System">
+                    <param id="0" name="Group name">&quot;Death&quot;</param>
+                    <param id="1" name="State">1</param>
+                </action>
+                <action id="-12" name="Set group active" sid="8478365838897728" type="System">
+                    <param id="0" name="Group name">&quot;Vibrate&quot;</param>
+                    <param id="1" name="State">1</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="3494547863089013">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="8266095607854491" type="System">
+                            <param id="0" name="First value">Score</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Second value">HighScore</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set local value" sid="2530664428841512" type="WebStorage">
+                            <param id="0" name="Key">&quot;HighScore&quot;</param>
+                            <param id="1" name="Value">Score</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="6024339352708768">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="7648864424072443" type="Player">
+                    <param id="0" name="Object">blueOrb</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-10" name="Add to" sid="8621653896864787" type="System">
+                    <param id="0" name="Variable">Score</param>
+                    <param id="1" name="Value">4</param>
+                </action>
+                <action id="-9" name="Destroy" sid="4583452055543464" type="blueOrb" />
+                <action id="-12" name="Set group active" sid="9207305250897232" type="System">
+                    <param id="0" name="Group name">&quot;Vibrate&quot;</param>
+                    <param id="1" name="State">1</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="8119363325853888">
+                    <conditions>
+                        <condition id="7" name="Compare key value (as number)" sid="9847441333935449" type="WebStorage">
+                            <param id="0" name="Key">&quot;SoundOn&quot;</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Play sound (by WAV URI)" sid="8752173985789896" type="WindowsPhone">
+                            <param id="0" name="Audio file URI">&quot;media\absorb.wav&quot;</param>
+                            <param id="3" name="Loop">0</param>
+                            <param id="4" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="4238027524938276">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="6410821162526843" type="Player">
+                    <param id="0" name="Object">redOrb</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="3919156820958796" type="redOrb" />
+                <action id="-9" name="Destroy" sid="1903735057519215" type="Player" />
+                <action id="-9" name="Set value" sid="4117005202660302" type="System">
+                    <param id="0" name="Variable">playerDead</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="-9" name="Set value" sid="4251577687940694" type="System">
+                    <param id="0" name="Variable">isPaused</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="-12" name="Set group active" sid="7084090482890789" type="System">
+                    <param id="0" name="Group name">&quot;Death&quot;</param>
+                    <param id="1" name="State">1</param>
+                </action>
+                <action id="-12" name="Set group active" sid="3493382572976367" type="System">
+                    <param id="0" name="Group name">&quot;Vibrate&quot;</param>
+                    <param id="1" name="State">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="662131421443717">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="6221282903607026" type="barrierBar">
+                    <param id="0" name="Object">greenOrb</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="8432560989859529" type="greenOrb" />
+            </actions>
+        </event-block>
+        <event-block sid="5684711511246967">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="6395570634198814" type="barrierBar">
+                    <param id="0" name="Object">blueOrb</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="852897950209938" type="blueOrb" />
+            </actions>
+        </event-block>
+        <event-block sid="9638007225491807">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="5088129248431312" type="barrierBar">
+                    <param id="0" name="Object">redOrb</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="9472326912153632" type="redOrb" />
+            </actions>
+        </event-block>
+        <event-block sid="621537148277574">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="7214500888202422" type="System">
+                    <param id="0" name="Interval (seconds)">0.6</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-3" name="Create object" sid="2721901179827725" type="System">
+                    <param id="0" name="Object to create">flare</param>
+                    <param id="1" name="Layer">0</param>
+                    <param id="2" name="X">random(0,1280)</param>
+                    <param id="3" name="Y">710</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="468630376829057">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="725596120729625" type="System">
+                    <param id="0" name="Interval (seconds)">3</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="3752718294228931" type="System">
+                    <param id="0" name="Variable">isPaused</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-3" name="Create object" sid="3709279059690069" type="System">
+                    <param id="0" name="Object to create">greenOrb</param>
+                    <param id="1" name="Layer">1</param>
+                    <param id="2" name="X">random(700,1280)</param>
+                    <param id="3" name="Y">random(-60,-30)</param>
+                </action>
+                <action id="-10" name="Add to" sid="6211213940210395" type="System">
+                    <param id="0" name="Variable">Score</param>
+                    <param id="1" name="Value">2</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="9198305485098727">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="9856702860386224" type="System">
+                    <param id="0" name="Interval (seconds)">random(6,8)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-3" name="Create object" sid="3755326090290669" type="System">
+                    <param id="0" name="Object to create">blueOrb</param>
+                    <param id="1" name="Layer">1</param>
+                    <param id="2" name="X">random(600,1280)</param>
+                    <param id="3" name="Y">random(-60,-30)</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="159943020368845">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="2403644539575233" type="System">
+                    <param id="0" name="Interval (seconds)">random(20,22)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-3" name="Create object" sid="2137361845762741" type="System">
+                    <param id="0" name="Object to create">redOrb</param>
+                    <param id="1" name="Layer">1</param>
+                    <param id="2" name="X">random(700,1280)</param>
+                    <param id="3" name="Y">random(-30,-60)</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="5636297565008855">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="7045627047225847" type="System">
+                    <param id="0" name="Interval (seconds)">random(11,15)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-3" name="Create object" sid="4882940378271886" type="System">
+                    <param id="0" name="Object to create">mist11</param>
+                    <param id="1" name="Layer">1</param>
+                    <param id="2" name="X">1800</param>
+                    <param id="3" name="Y">random(450,550)</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="9106697418242389">
+            <conditions>
+                <condition id="1" name="On any touch end" sid="3726921708256868" type="Touch" />
+                <condition id="4" inverted="1" name="Is touching object" sid="2853290873887836" type="Touch">
+                    <param id="0" name="Object">jumpButton</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="9550422381534655" type="System">
+                    <param id="0" name="Variable">isPaused</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Spawn another object" sid="2199017912715805" type="Player">
+                    <param id="0" name="Object">Bullet</param>
+                    <param id="1" name="Layer">1</param>
+                    <param id="2" name="Image point">50</param>
+                </action>
+                <action id="-22" name="Set angle toward position" sid="9233071529544745" type="Bullet">
+                    <param id="0" name="X">Touch.X</param>
+                    <param id="1" name="Y">Touch.Y</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="277456324577329">
+                    <conditions>
+                        <condition id="7" name="Compare key value (as number)" sid="5441216236873004" type="WebStorage">
+                            <param id="0" name="Key">&quot;SoundOn&quot;</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Play sound (by WAV URI)" sid="5041333321196907" type="WindowsPhone">
+                            <param id="0" name="Audio file URI">&quot;media\gunshotv2.wav&quot;</param>
+                            <param id="3" name="Loop">0</param>
+                            <param id="4" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="4192288379419451">
+            <conditions>
+                <condition behavior="8Direction" id="0" inverted="1" name="Is moving" sid="6621050591194395" type="Player" />
+            </conditions>
+            <actions>
+                <action id="6" name="Set speed" sid="1477013172695132" type="Player">
+                    <param id="0" name="Speed">8</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="9726442340288598">
+            <conditions>
+                <condition id="4" name="Is touching object" sid="3629346696445911" type="Touch">
+                    <param id="0" name="Object">jumpButton</param>
+                </condition>
+                <condition id="-2" name="Compare Y" sid="240502314657604" type="Player">
+                    <param id="0" name="Comparison">4</param>
+                    <param id="1" name="Y co-ordinate">450</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="8Direction" id="7" name="Simulate control" sid="3619256452606892" type="Player">
+                    <param id="0" name="Control">2</param>
+                </action>
+                <action id="6" name="Set speed" sid="1071358020265837" type="Player">
+                    <param id="0" name="Speed">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="729094740264982">
+            <conditions>
+                <condition id="3" name="On touched object" sid="1976746343273903" type="Touch">
+                    <param id="0" name="Object">restartButton</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="5236173372530565" type="System">
+                    <param id="0" name="Variable">isPaused</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-13" name="Set time scale" sid="8545541349331871" type="System">
+                    <param id="0" name="Time scale">1.0</param>
+                </action>
+                <action id="-26" name="Restart layout" sid="6755573878681115" type="System" />
+                <action id="-12" name="Set group active" sid="9699649815050248" type="System">
+                    <param id="0" name="Group name">&quot;BulletDestroy&quot;</param>
+                    <param id="1" name="State">1</param>
+                </action>
+                <action id="-9" name="Set value" sid="4149234426843314" type="System">
+                    <param id="0" name="Variable">isPaused</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="-9" name="Set value" sid="3716943309927478" type="System">
+                    <param id="0" name="Variable">Score</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="-9" name="Set value" sid="7938196207596655" type="System">
+                    <param id="0" name="Variable">playerDead</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="1259640576908961">
+            <conditions>
+                <condition id="3" name="On touched object" sid="4119370212458569" type="Touch">
+                    <param id="0" name="Object">mainmenuButton</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="6380388235932076" type="System">
+                    <param id="0" name="Variable">isPaused</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-21" name="Reset global variables" sid="3775811347662524" type="System" />
+                <action id="-25" name="Go to layout (by name)" sid="8421471571809744" type="System">
+                    <param id="0" name="Layout">&quot;MainMenu&quot;</param>
+                </action>
+                <action id="-9" name="Set value" sid="9638292108955549" type="System">
+                    <param id="0" name="Variable">playerDead</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="-9" name="Set value" sid="787072874457067" type="System">
+                    <param id="0" name="Variable">firstTime</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>Pausing Game</comment>
+        <event-block sid="5466304970619355">
+            <conditions>
+                <condition id="3" name="On touched object" sid="7964104183773739" type="Touch">
+                    <param id="0" name="Object">pause</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="2994607015176402" type="System">
+                    <param id="0" name="Variable">playerDead</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="457497663173567" type="System">
+                    <param id="0" name="Variable">isPaused</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="-12" name="Set group active" sid="5505969483890703" type="System">
+                    <param id="0" name="Group name">&quot;Pause&quot;</param>
+                    <param id="1" name="State">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>Resuming Game</comment>
+        <event-block sid="1746232818678321">
+            <conditions>
+                <condition id="3" name="On touched object" sid="5468650189313545" type="Touch">
+                    <param id="0" name="Object">resumeButton</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="1711052882527787" type="System">
+                    <param id="0" name="Variable">playerDead</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-12" name="Set group active" sid="5854529784797108" type="System">
+                    <param id="0" name="Group name">&quot;Resume&quot;</param>
+                    <param id="1" name="State">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="2735593407580039">
+            <conditions>
+                <condition id="2" name="On back" sid="2817717939785221" type="WindowsPhone" />
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="8180315587157093">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="3478096906975773" type="System">
+                            <param id="0" name="Variable">isPaused</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="4771848649860524" type="System">
+                            <param id="0" name="Variable">isPaused</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="3344984603424433" type="System">
+                            <param id="0" name="Group name">&quot;Pause&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="6544695127351731">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="6974789570061322" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-12" name="Set group active" sid="5343353874207683" type="System">
+                            <param id="0" name="Group name">&quot;BackButton&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-group description="" inactive="1" sid="6369593705317958" title="Resume">
+            <sub-events>
+                <event-block sid="6272222984746473">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="8960736523509476" type="System">
+                            <param id="0" name="Variable">isPaused</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-13" name="Set time scale" sid="7336780981492206" type="System">
+                            <param id="0" name="Time scale">1.0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="2357701289855466" type="System">
+                            <param id="0" name="Group name">&quot;BulletDestroy&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="7242258323491129" type="System">
+                            <param id="0" name="Variable">isPaused</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="8915037335584002" type="pause">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="2643724522568277" type="jumpButton">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="1371378383080401" type="mainmenuButton">
+                            <param id="0" name="Visibility">0</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="4176151744928721" type="restartButton">
+                            <param id="0" name="Visibility">0</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="2022949287226237" type="resumeButton">
+                            <param id="0" name="Visibility">0</param>
+                        </action>
+                        <action id="-16" name="Set opacity" sid="3979152877897791" type="score">
+                            <param id="0" name="Opacity">100</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="1254879262393908" type="score">
+                            <param id="0" name="Visibility">0</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="7470978421178806" type="txtScore">
+                            <param id="0" name="Visibility">0</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="2442444710463043" type="txtActualScore">
+                            <param id="0" name="Visibility">0</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="9115443738187506" type="txtPaused">
+                            <param id="0" name="Visibility">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="6516715013217763" type="System">
+                            <param id="0" name="Group name">&quot;Resume&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="1413221903048571">
+                            <conditions>
+                                <condition id="7" name="Compare key value (as number)" sid="8920069658993181" type="WebStorage">
+                                    <param id="0" name="Key">&quot;SoundOn&quot;</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="5" name="Play music (by WAV URI)" sid="6263709512363305" type="WindowsPhone">
+                                    <param id="0" name="Audio file URI">&quot;media/mainmusicv2.wav&quot;</param>
+                                    <param id="3" name="Loop">1</param>
+                                    <param id="4" name="Volume">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" inactive="1" sid="884444967879925" title="Pause">
+            <sub-events>
+                <event-block any="1" sid="2910023710798262">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="7689005887477308" type="System">
+                            <param id="0" name="Variable">isPaused</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-13" name="Set time scale" sid="8243342689209292" type="System">
+                            <param id="0" name="Time scale">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="1312014818429843" type="System">
+                            <param id="0" name="Group name">&quot;HighScore&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="4964727810203731" type="pause">
+                            <param id="0" name="Visibility">0</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="8295123493467341" type="jumpButton">
+                            <param id="0" name="Visibility">0</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="5931189681405483" type="mainmenuButton">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="6135261869476282" type="restartButton">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="3060403691815485" type="resumeButton">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="4936831744730007" type="score">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action id="-16" name="Set opacity" sid="8389108688324947" type="score">
+                            <param id="0" name="Opacity">50</param>
+                        </action>
+                        <action id="0" name="Set text" sid="3223845936979161" type="txtActualScore">
+                            <param id="0" name="Text">Score</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="9085771410679228" type="txtScore">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="7215580020050772" type="txtActualScore">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="1189469557263553" type="txtPaused">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action id="6" name="Stop all music" sid="5695064437832139" type="WindowsPhone" />
+                        <action id="-12" name="Set group active" sid="4635939678995395" type="System">
+                            <param id="0" name="Group name">&quot;Pause&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" inactive="1" sid="9388763290516173" title="Death">
+            <sub-events>
+                <event-block sid="3694683529932732">
+                    <conditions>
+                        <condition id="7" name="Compare key value (as number)" sid="9043432424126901" type="WebStorage">
+                            <param id="0" name="Key">&quot;SoundOn&quot;</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="6" name="Stop all music" sid="9036510087395988" type="WindowsPhone" />
+                        <action id="4" name="Play sound (by WAV URI)" sid="7354237094267672" type="WindowsPhone">
+                            <param id="0" name="Audio file URI">&quot;media\deadv2.wav&quot;</param>
+                            <param id="3" name="Loop">0</param>
+                            <param id="4" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="257326261249936">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="6930935413599737" type="System">
+                            <param id="0" name="Variable">playerDead</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-12" name="Set group active" sid="4000199779449849" type="System">
+                            <param id="0" name="Group name">&quot;HighScore&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="0" name="Set text" sid="672880679449085" type="txtActualScore">
+                            <param id="0" name="Text">Score</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="1930723653378427" type="pause">
+                            <param id="0" name="Visibility">0</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="7676532601973607" type="jumpButton">
+                            <param id="0" name="Visibility">0</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="4082094547246909" type="mainmenuButton">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="4589422929234912" type="restartButton">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="9586952358128331" type="score">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="3064005867678347" type="txtActualScore">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="4462557462002865" type="txtGameOver">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="7666750215709443" type="txtScore">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="6523559183272043" type="System">
+                            <param id="0" name="Group name">&quot;Death&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" inactive="1" sid="8533842282903466" title="HighScore">
+            <sub-events>
+                <event-block sid="5525224321214539">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="6210778534288736" type="System">
+                            <param id="0" name="First value">Score</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Second value">HighScore</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set local value" sid="8134309121783904" type="WebStorage">
+                            <param id="0" name="Key">&quot;HighScore&quot;</param>
+                            <param id="1" name="Value">Score</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="2266724254211196" type="System">
+                            <param id="0" name="Group name">&quot;HighScore&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" inactive="1" sid="5886397225386575" title="BulletDestroy">
+            <sub-events>
+                <event-block sid="9659822438700587">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="4272933528089451" type="Bullet">
+                            <param id="0" name="Object">background</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="3971950992633413" type="Bullet" />
+                        <action id="-12" name="Set group active" sid="5740200918130182" type="System">
+                            <param id="0" name="Group name">&quot;BulletDestroy&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" inactive="1" sid="5107822132518916" title="BackButton">
+            <sub-events>
+                <event-block sid="63681269133748">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="829547151898516" type="System">
+                            <param id="0" name="Variable">playerDead</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-2" name="Go to layout" sid="2084900940666912" type="System">
+                            <param id="0" name="Layout">MainMenu</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="4212620986123965" type="System">
+                            <param id="0" name="Group name">&quot;BackButton&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="7178678014477559">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="566348378539438" type="System">
+                            <param id="0" name="Variable">isPaused</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-12" name="Set group active" sid="3381849888766773" type="System">
+                            <param id="0" name="Group name">&quot;Resume&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="0" name="Spawn another object" sid="1421397044450506" type="Player">
+                            <param id="0" name="Object">Bullet</param>
+                            <param id="1" name="Layer">0</param>
+                            <param id="2" name="Image point">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="1394227070679067" type="System">
+                            <param id="0" name="Group name">&quot;BackButton&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" inactive="1" sid="9089660567335399" title="ExpSound">
+            <sub-events>
+                <event-block sid="5001916354854178">
+                    <conditions>
+                        <condition id="7" name="Compare key value (as number)" sid="6572282230872872" type="WebStorage">
+                            <param id="0" name="Key">&quot;SoundOn&quot;</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Play sound (by WAV URI)" sid="9189562895193706" type="WindowsPhone">
+                            <param id="0" name="Audio file URI">&quot;media\explosion.wav&quot;</param>
+                            <param id="3" name="Loop">0</param>
+                            <param id="4" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="9235212158662452" type="System">
+                            <param id="0" name="Group name">&quot;ExpSound&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" inactive="1" sid="3427567889408721" title="Vibrate">
+            <sub-events>
+                <event-block sid="4087860212733743">
+                    <conditions>
+                        <condition id="7" name="Compare key value (as number)" sid="2541533290328494" type="WebStorage">
+                            <param id="0" name="Key">&quot;VbOn&quot;</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="2" name="Vibrate Windows Phone" sid="1123960453281081" type="WindowsPhone">
+                            <param id="0" name="Vibrate">0.5</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="4764949481525675" type="System">
+                            <param id="0" name="Group name">&quot;Vibrate&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+    </events>
+</c2eventsheet>

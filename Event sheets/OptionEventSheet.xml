@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>OptionEventSheet</name>
+    <events>
+        <event-block sid="2940749024343662">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="1000506017126279" type="System" />
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="8143888649074136">
+                    <conditions>
+                        <condition id="7" name="Compare key value (as number)" sid="9726883505814391" type="WebStorage">
+                            <param id="0" name="Key">&quot;SoundOn&quot;</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-12" name="Set group active" sid="3017106029155594" type="System">
+                            <param id="0" name="Group name">&quot;Cross&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="7477369283592358">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="6511207353441235" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-12" name="Set group active" sid="5477199264551866" type="System">
+                            <param id="0" name="Group name">&quot;Tick&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="7810840517939681">
+                    <conditions>
+                        <condition id="7" name="Compare key value (as number)" sid="6948569475907679" type="WebStorage">
+                            <param id="0" name="Key">&quot;VbOn&quot;</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-12" name="Set group active" sid="2512988938669847" type="System">
+                            <param id="0" name="Group name">&quot;Cross2&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="8862864762741274">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="8976971638987266" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-12" name="Set group active" sid="8070494632617564" type="System">
+                            <param id="0" name="Group name">&quot;Tick2&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="3263050965277718">
+            <conditions>
+                <condition id="3" name="On touched object" sid="7372680989227937" type="Touch">
+                    <param id="0" name="Object">Sprite3</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="2720766185854513">
+                    <conditions>
+                        <condition id="7" name="Compare key value (as number)" sid="1117074146190133" type="WebStorage">
+                            <param id="0" name="Key">&quot;SoundOn&quot;</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set local value" sid="8367643126345885" type="WebStorage">
+                            <param id="0" name="Key">&quot;SoundOn&quot;</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="4519509675804704" type="System">
+                            <param id="0" name="Group name">&quot;Cross&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="4546756790653929">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="5120429465324469" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set local value" sid="85901382862248" type="WebStorage">
+                            <param id="0" name="Key">&quot;SoundOn&quot;</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="4793558387335865" type="System">
+                            <param id="0" name="Group name">&quot;Tick&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="4577769724040117">
+            <conditions>
+                <condition id="3" name="On touched object" sid="4793318982331925" type="Touch">
+                    <param id="0" name="Object">optHome</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-25" name="Go to layout (by name)" sid="6151210633078861" type="System">
+                    <param id="0" name="Layout">&quot;MainMenu&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="1743900934599536">
+            <conditions>
+                <condition id="2" name="On back" sid="2393477418853628" type="WindowsPhone" />
+            </conditions>
+            <actions>
+                <action id="-2" name="Go to layout" sid="5177271957721084" type="System">
+                    <param id="0" name="Layout">MainMenu</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-group description="" inactive="1" sid="7848805748649399" title="Cross">
+            <sub-events>
+                <event-block sid="1521527625312542">
+                    <conditions>
+                        <condition id="7" name="Compare key value (as number)" sid="6787494648772193" type="WebStorage">
+                            <param id="0" name="Key">&quot;SoundOn&quot;</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-15" name="Set visible" sid="4308848432842949" type="tick">
+                            <param id="0" name="Visibility">0</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="9878168428905446" type="cross">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="1864007683902791" type="System">
+                            <param id="0" name="Group name">&quot;Cross&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" inactive="1" sid="8535324215300252" title="Tick">
+            <sub-events>
+                <event-block sid="6856680300440784">
+                    <conditions>
+                        <condition id="7" name="Compare key value (as number)" sid="5953293764843949" type="WebStorage">
+                            <param id="0" name="Key">&quot;SoundOn&quot;</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-15" name="Set visible" sid="1293684066868986" type="cross">
+                            <param id="0" name="Visibility">0</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="6210983533563277" type="tick">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="4015220231935945" type="System">
+                            <param id="0" name="Group name">&quot;Tick&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-block sid="1190333554737093">
+            <conditions>
+                <condition id="3" name="On touched object" sid="6870878838583222" type="Touch">
+                    <param id="0" name="Object">VbTitle</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="3363292896340165">
+                    <conditions>
+                        <condition id="7" name="Compare key value (as number)" sid="2822007673442063" type="WebStorage">
+                            <param id="0" name="Key">&quot;VbOn&quot;</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set local value" sid="4972829868239368" type="WebStorage">
+                            <param id="0" name="Key">&quot;VbOn&quot;</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="8093931888502914" type="System">
+                            <param id="0" name="Group name">&quot;Tick2&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="3518856215918955">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="9251831642132887" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set local value" sid="5868719183779279" type="WebStorage">
+                            <param id="0" name="Key">&quot;VbOn&quot;</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="6716594533497818" type="System">
+                            <param id="0" name="Group name">&quot;Cross2&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-group description="" inactive="1" sid="7491510854816489" title="Tick2">
+            <sub-events>
+                <event-block sid="6856680300440784">
+                    <conditions>
+                        <condition id="7" name="Compare key value (as number)" sid="5953293764843949" type="WebStorage">
+                            <param id="0" name="Key">&quot;VbOn&quot;</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-15" name="Set visible" sid="1293684066868986" type="Cross2">
+                            <param id="0" name="Visibility">0</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="6210983533563277" type="Tick2">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="4015220231935945" type="System">
+                            <param id="0" name="Group name">&quot;Tick2&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" inactive="1" sid="5876453986133153" title="Cross2">
+            <sub-events>
+                <event-block sid="272422232518443">
+                    <conditions>
+                        <condition id="7" name="Compare key value (as number)" sid="5705583891443785" type="WebStorage">
+                            <param id="0" name="Key">&quot;VbOn&quot;</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-15" name="Set visible" sid="5767008942732236" type="Tick2">
+                            <param id="0" name="Visibility">0</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="7116057951058957" type="Cross2">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="211187885465105" type="System">
+                            <param id="0" name="Group name">&quot;Cross2&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-block sid="6422427962039578">
+            <conditions>
+                <condition id="3" name="On touched object" sid="2424049792622103" type="Touch">
+                    <param id="0" name="Object">txtInfo</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-2" name="Go to layout" sid="4063401016067725" type="System">
+                    <param id="0" name="Layout">Info</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

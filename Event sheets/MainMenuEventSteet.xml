@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>MainMenuEventSteet</name>
+    <events>
+        <event-block sid="7626470373874012">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="6215959067017304" type="System" />
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="3909204601112575" type="System">
+                    <param id="0" name="Variable">isPaused</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="-9" name="Set value" sid="1633732601679143" type="System">
+                    <param id="0" name="Variable">OnMain</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="-13" name="Set time scale" sid="8463224592705296" type="System">
+                    <param id="0" name="Time scale">1.0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="7210504153574619">
+            <conditions>
+                <condition id="3" name="On touched object" sid="8804211959354254" type="Touch">
+                    <param id="0" name="Object">playButton</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="5489515664390427" type="System">
+                    <param id="0" name="Variable">isPaused</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-25" name="Go to layout (by name)" sid="2378954471784235" type="System">
+                    <param id="0" name="Layout">&quot;Game&quot;</param>
+                </action>
+                <action id="-9" name="Set value" sid="1492906817802055" type="System">
+                    <param id="0" name="Variable">isPaused</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="-12" name="Set group active" sid="6939096885412028" type="System">
+                    <param id="0" name="Group name">&quot;BulletDestroy&quot;</param>
+                    <param id="1" name="State">1</param>
+                </action>
+                <action id="-9" name="Set value" sid="2474795897804337" type="System">
+                    <param id="0" name="Variable">playerDead</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="-9" name="Set value" sid="5786377169348309" type="System">
+                    <param id="0" name="Variable">firstTime</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="3896745625741882">
+            <conditions>
+                <condition id="-3" name="On end of layout" sid="5573902687733854" type="System" />
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="9821550024322941" type="System">
+                    <param id="0" name="Variable">isPaused</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="3462387334317892">
+            <conditions>
+                <condition id="3" name="On touched object" sid="5564120205928598" type="Touch">
+                    <param id="0" name="Object">optButtton</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="9631076636080053" type="System">
+                    <param id="0" name="Variable">isPaused</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-2" name="Go to layout" sid="8686383055026086" type="System">
+                    <param id="0" name="Layout">Option</param>
+                </action>
+                <action id="-9" name="Set value" sid="5385591529398845" type="System">
+                    <param id="0" name="Variable">playerDead</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="0" name="Set text" sid="5908161194414069" type="HiScore">
+                    <param id="0" name="Text">WebStorage.LocalValue(&quot;HScore&quot;)</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="3179266654738629">
+            <conditions>
+                <condition id="3" name="On touched object" sid="4107178815092991" type="Touch">
+                    <param id="0" name="Object">exitButton</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="3023001069903354" type="System">
+                    <param id="0" name="Variable">isPaused</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-2" name="Go to layout" sid="5766052001742718" type="System">
+                    <param id="0" name="Layout">Credits</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="4073715318581491">
+            <conditions>
+                <condition id="2" name="On back" sid="6467240110168499" type="WindowsPhone" />
+            </conditions>
+            <actions>
+                <action id="1" name="Quit" sid="1121837983307763" type="WindowsPhone" />
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

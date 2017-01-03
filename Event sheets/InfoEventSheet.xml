@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>InfoEventSheet</name>
+    <events>
+        <event-block sid="7173906618613848">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="8784232753754431" type="System" />
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="779766059729618" type="System">
+                    <param id="0" name="Variable">isPaused</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="-3" name="Set position" sid="9351337824314334" type="Help">
+                    <param id="0" name="X">427</param>
+                    <param id="1" name="Y">587</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="4491915719280059">
+                    <conditions>
+                        <condition id="3" name="Local key exists" sid="7431854212272763" type="WebStorage">
+                            <param id="0" name="Key">&quot;HighScore&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="3971193238719652" type="System">
+                            <param id="0" name="Variable">HighScore</param>
+                            <param id="1" name="Value">WebStorage.LocalValue(&quot;HighScore&quot;)</param>
+                        </action>
+                        <action id="0" name="Set text" sid="857302963088119" type="HiScore">
+                            <param id="0" name="Text">HighScore</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="7261342148988126">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="6340005878878196" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="1620340617031675" type="System">
+                            <param id="0" name="Variable">HighScore</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="0" name="Set text" sid="3900590723254514" type="HiScore">
+                            <param id="0" name="Text">HighScore</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="9588809706211896">
+            <conditions>
+                <condition id="-3" name="On end of layout" sid="6960495500233882" type="System" />
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="1510700547141005" type="System">
+                    <param id="0" name="Variable">isPaused</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="6455911778969745">
+            <conditions>
+                <condition id="-8" name="Compare two values" sid="5311286723518983" type="System">
+                    <param id="0" name="First value">Help.Y</param>
+                    <param id="1" name="Comparison">5</param>
+                    <param id="2" name="Second value">587</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-15" name="Set visible" sid="6819133802193453" type="topIA">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="-15" name="Set visible" sid="5030302171698385" type="topA">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="5643265004941124">
+            <conditions>
+                <condition id="-8" name="Compare two values" sid="7357844435846395" type="System">
+                    <param id="0" name="First value">Help.Y</param>
+                    <param id="1" name="Comparison">3</param>
+                    <param id="2" name="Second value">317</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-15" name="Set visible" sid="6217337466768998" type="bottomIA">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="-15" name="Set visible" sid="7034625773816742" type="bottomA">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="2612894508237657">
+            <conditions>
+                <condition id="-8" name="Compare two values" sid="684700190410898" type="System">
+                    <param id="0" name="First value">Help.Y</param>
+                    <param id="1" name="Comparison">4</param>
+                    <param id="2" name="Second value">317</param>
+                </condition>
+                <condition id="-8" name="Compare two values" sid="3983332195679004" type="System">
+                    <param id="0" name="First value">Help.Y</param>
+                    <param id="1" name="Comparison">2</param>
+                    <param id="2" name="Second value">587</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-15" name="Set visible" sid="155744068922078" type="bottomA">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="-15" name="Set visible" sid="4182479266163763" type="bottomIA">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="-15" name="Set visible" sid="1793985232895768" type="topA">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="-15" name="Set visible" sid="5786762848345935" type="topIA">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="1757334835792772">
+            <conditions>
+                <condition id="4" name="Is touching object" sid="6057283402569724" type="Touch">
+                    <param id="0" name="Object">bottomA</param>
+                </condition>
+                <condition id="-9" name="Is visible" sid="8428691816655175" type="bottomA" />
+            </conditions>
+            <actions>
+                <action id="-23" name="Move at angle" sid="6624714834532717" type="Help">
+                    <param id="0" name="Angle">270</param>
+                    <param id="1" name="Distance">10</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="955370609105827">
+            <conditions>
+                <condition id="4" name="Is touching object" sid="2738768394064302" type="Touch">
+                    <param id="0" name="Object">topA</param>
+                </condition>
+                <condition id="-9" name="Is visible" sid="7150159157958657" type="topA" />
+            </conditions>
+            <actions>
+                <action id="-23" name="Move at angle" sid="695546333424288" type="Help">
+                    <param id="0" name="Angle">90</param>
+                    <param id="1" name="Distance">10</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="1265989330151572">
+            <conditions>
+                <condition id="2" name="On back" sid="3063344033354726" type="WindowsPhone" />
+            </conditions>
+            <actions>
+                <action id="-2" name="Go to layout" sid="6793341555070804" type="System">
+                    <param id="0" name="Layout">Option</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>
